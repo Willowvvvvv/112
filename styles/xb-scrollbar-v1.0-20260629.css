@@ -1,0 +1,87 @@
+/* 弹窗/抽屉内滚动条 — 对齐 agent-demo xb-scrollbar */
+/* 版本: v1.0 | 日期: 2026-06-29 */
+
+:root {
+  --xb-scrollbar-thumb: rgba(21, 32, 51, 0.22);
+  --xb-scrollbar-thumb-hover: rgba(21, 32, 51, 0.34);
+}
+
+:is(
+  .xb-overlay-scrollbar,
+  .xb-chain-scroll,
+  .xb-chain-drawer-body,
+  .xb-scenario-page-body,
+  .scenario-modal-body
+) {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+:is(
+  .xb-overlay-scrollbar,
+  .xb-chain-scroll,
+  .xb-chain-drawer-body,
+  .xb-scenario-page-body,
+  .scenario-modal-body
+):hover,
+:is(
+  .xb-overlay-scrollbar,
+  .xb-chain-scroll,
+  .xb-chain-drawer-body,
+  .xb-scenario-page-body,
+  .scenario-modal-body
+):focus-within {
+  scrollbar-color: var(--xb-scrollbar-thumb) transparent;
+}
+
+:is(
+  .xb-overlay-scrollbar,
+  .xb-chain-scroll,
+  .xb-chain-drawer-body,
+  .xb-scenario-page-body,
+  .scenario-modal-body
+)::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+:is(
+  .xb-overlay-scrollbar,
+  .xb-chain-scroll,
+  .xb-chain-drawer-body,
+  .xb-scenario-page-body,
+  .scenario-modal-body
+)::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:is(
+  .xb-overlay-scrollbar,
+  .xb-chain-scroll,
+  .xb-chain-drawer-body,
+  .xb-scenario-page-body,
+  .scenario-modal-body
+)::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 3px;
+}
+
+:is(
+  .xb-overlay-scrollbar,
+  .xb-chain-scroll,
+  .xb-chain-drawer-body,
+  .xb-scenario-page-body,
+  .scenario-modal-body
+):hover::-webkit-scrollbar-thumb {
+  background-color: var(--xb-scrollbar-thumb);
+}
+
+:is(
+  .xb-overlay-scrollbar,
+  .xb-chain-scroll,
+  .xb-chain-drawer-body,
+  .xb-scenario-page-body,
+  .scenario-modal-body
+):hover::-webkit-scrollbar-thumb:hover {
+  background-color: var(--xb-scrollbar-thumb-hover);
+}

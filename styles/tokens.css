@@ -1,0 +1,239 @@
+/* 财跃启明星视觉规范 v1.1 · 2026-06-25 */
+:root {
+  color-scheme: light;
+
+  /* 主色 · 深海蓝 */
+  --color-primary: #0d2e4b;
+  --color-primary-hover: #123a5c;
+  --color-primary-muted: #e8eef3;
+
+  /* 财联社专属 — 禁止挪作他用 */
+  --color-cls-gold: #c8973a;
+  --color-cls-gold-bg: #f9f3e8;
+  --color-cls-gold-border: #d4ae6a;
+
+  /* 中性色 */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-border: #e8ecf0;
+  --color-surface-secondary: #f5f7fa;
+  --color-text: #152033;
+  --color-text-secondary: #536075;
+  --color-text-muted: #8992a3;
+
+  /* 功能色（从简） */
+  --color-success: #1a6b42;
+  --color-success-soft: #e8f3ec;
+  --color-warning: #8a6a2e;
+  --color-warning-soft: #f5f0e4;
+  --color-danger: #9e3838;
+  --color-danger-soft: #f8ecec;
+
+  /* 圆角 · 最大 8px */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* 字体 */
+  --font-brand: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-latin: "Inter", "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-mono: "SF Mono", "Menlo", "Consolas", monospace;
+
+  /* 布局 */
+  --shadow-sm: 0 1px 2px rgba(13, 46, 75, 0.06);
+  --shadow-md: 0 4px 14px rgba(13, 46, 75, 0.1);
+  --topbar-h: 52px;
+  --left-w: 220px;
+  --right-w: 380px;
+
+  /* 兼容别名（逐步迁移至 --color-*） */
+  --bg: var(--color-bg);
+  --bg-soft: #f5f7fa;
+  --secondary: var(--color-surface-secondary);
+
+  /* agent-demo WebUI 对齐别名 */
+  --xb-color-primary: var(--color-primary);
+  --xb-color-primary-hover: var(--color-primary-hover);
+  --xb-color-primary-muted: var(--color-primary-muted);
+  --xb-color-bg: var(--color-bg);
+  --xb-bg: var(--color-bg);
+  --xb-color-surface: var(--color-surface);
+  --xb-color-border: var(--color-border);
+  --xb-color-text: var(--color-text);
+  --xb-color-text-secondary: var(--color-text-secondary);
+  --xb-color-text-muted: var(--color-text-muted);
+  --xb-bg-soft: var(--bg-soft);
+  --xb-line: var(--color-border);
+  --xb-line-soft: #f0f2f5;
+  --xb-brand: var(--color-primary);
+  --xb-faint: var(--color-text-muted);
+  --xb-muted: var(--color-text-secondary);
+  --xb-text: var(--color-text);
+  --xb-surface: var(--color-surface);
+  --xb-radius-sm: var(--radius-sm);
+  --xb-radius-md: var(--radius-md);
+  --xb-radius-lg: var(--radius-lg);
+  --muted-foreground: var(--color-text-secondary);
+  --foreground: var(--color-text);
+  --border: var(--color-border);
+  --background: var(--color-bg);
+  --primary: var(--color-primary);
+  --surface: var(--color-surface);
+  --surface-soft: #ffffff;
+  --surface-blue: var(--color-primary-muted);
+  --line: var(--color-border);
+  --line-strong: #c4bcb0;
+  --text: var(--color-text);
+  --muted: var(--color-text-secondary);
+  --faint: var(--color-text-muted);
+  --brand: var(--color-primary);
+  --brand-deep: var(--color-primary-hover);
+  --brand-soft: var(--color-primary-muted);
+  --accent: var(--color-primary);
+  --accent-soft: var(--color-primary-muted);
+  --green: var(--color-success);
+  --green-soft: var(--color-success-soft);
+  --amber: var(--color-warning);
+  --amber-soft: var(--color-warning-soft);
+  --red: var(--color-danger);
+  --red-soft: var(--color-danger-soft);
+  --scrollbar-thumb: rgba(21, 32, 51, 0.22);
+  --scrollbar-thumb-hover: rgba(21, 32, 51, 0.34);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; overflow: hidden; }
+body {
+  font-family: var(--font-sans), var(--font-latin), sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 13px;
+  line-height: 1.55;
+}
+button, input, textarea, select { font: inherit; }
+button { border: 0; cursor: pointer; }
+::selection { background: rgba(13, 46, 75, 0.16); }
+
+/* 滚动条：内容未溢出时不显示；溢出时悬停/聚焦滚动区才显滑块（见 .cursor/rules/xinbao-demo-design-checklist.mdc） */
+
+.sidebar,
+.feature-scroll,
+.messages,
+.materials-sidebar-nav,
+.materials-main-body,
+.files-list,
+.files-tree-scroll,
+.drawer-body,
+.composer-menu-list,
+.expert-dropdown-list,
+.response-style-dropdown-list,
+.scenario-modal-body,
+.preview-body {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.sidebar:hover,
+.feature-scroll:hover,
+.messages:hover,
+.materials-sidebar-nav:hover,
+.materials-main-body:hover,
+.files-list:hover,
+.drawer-body:hover,
+.composer-menu-list:hover,
+.expert-dropdown-list:hover,
+.response-style-dropdown-list:hover,
+.scenario-modal-body:hover,
+.preview-body:hover,
+.sidebar:focus-within,
+.feature-scroll:focus-within,
+.messages:focus-within,
+.materials-sidebar-nav:focus-within,
+.materials-main-body:focus-within,
+.files-list:focus-within,
+.drawer-body:focus-within,
+.composer-menu-list:focus-within,
+.expert-dropdown-list:focus-within,
+.response-style-dropdown-list:focus-within,
+.scenario-modal-body:focus-within,
+.preview-body:focus-within {
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+.sidebar::-webkit-scrollbar,
+.feature-scroll::-webkit-scrollbar,
+.messages::-webkit-scrollbar,
+.materials-sidebar-nav::-webkit-scrollbar,
+.materials-main-body::-webkit-scrollbar,
+.files-list::-webkit-scrollbar,
+.drawer-body::-webkit-scrollbar,
+.composer-menu-list::-webkit-scrollbar,
+.expert-dropdown-list::-webkit-scrollbar,
+.response-style-dropdown-list::-webkit-scrollbar,
+.scenario-modal-body::-webkit-scrollbar,
+.preview-body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.feature-scroll::-webkit-scrollbar-track,
+.messages::-webkit-scrollbar-track,
+.materials-sidebar-nav::-webkit-scrollbar-track,
+.materials-main-body::-webkit-scrollbar-track,
+.files-list::-webkit-scrollbar-track,
+.drawer-body::-webkit-scrollbar-track,
+.composer-menu-list::-webkit-scrollbar-track,
+.expert-dropdown-list::-webkit-scrollbar-track,
+.response-style-dropdown-list::-webkit-scrollbar-track,
+.scenario-modal-body::-webkit-scrollbar-track,
+.preview-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.feature-scroll::-webkit-scrollbar-thumb,
+.messages::-webkit-scrollbar-thumb,
+.materials-sidebar-nav::-webkit-scrollbar-thumb,
+.materials-main-body::-webkit-scrollbar-thumb,
+.files-list::-webkit-scrollbar-thumb,
+.drawer-body::-webkit-scrollbar-thumb,
+.composer-menu-list::-webkit-scrollbar-thumb,
+.expert-dropdown-list::-webkit-scrollbar-thumb,
+.response-style-dropdown-list::-webkit-scrollbar-thumb,
+.scenario-modal-body::-webkit-scrollbar-thumb,
+.preview-body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 3px;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb,
+.feature-scroll:hover::-webkit-scrollbar-thumb,
+.messages:hover::-webkit-scrollbar-thumb,
+.materials-sidebar-nav:hover::-webkit-scrollbar-thumb,
+.materials-main-body:hover::-webkit-scrollbar-thumb,
+.files-list:hover::-webkit-scrollbar-thumb,
+.drawer-body:hover::-webkit-scrollbar-thumb,
+.composer-menu-list:hover::-webkit-scrollbar-thumb,
+.expert-dropdown-list:hover::-webkit-scrollbar-thumb,
+.response-style-dropdown-list:hover::-webkit-scrollbar-thumb,
+.scenario-modal-body:hover::-webkit-scrollbar-thumb,
+.preview-body:hover::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb:hover,
+.feature-scroll:hover::-webkit-scrollbar-thumb:hover,
+.messages:hover::-webkit-scrollbar-thumb:hover,
+.materials-sidebar-nav:hover::-webkit-scrollbar-thumb:hover,
+.materials-main-body:hover::-webkit-scrollbar-thumb:hover,
+.files-list:hover::-webkit-scrollbar-thumb:hover,
+.drawer-body:hover::-webkit-scrollbar-thumb:hover,
+.composer-menu-list:hover::-webkit-scrollbar-thumb:hover,
+.expert-dropdown-list:hover::-webkit-scrollbar-thumb:hover,
+.response-style-dropdown-list:hover::-webkit-scrollbar-thumb:hover,
+.scenario-modal-body:hover::-webkit-scrollbar-thumb:hover,
+.preview-body:hover::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}

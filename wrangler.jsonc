@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "xinbao-demo-v1-20250622",
+  "compatibility_date": "2026-06-25",
+  "assets": {
+    "directory": "."
+  }
+}

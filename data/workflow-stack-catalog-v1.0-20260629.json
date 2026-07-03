@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "date": "2026-06-29",
+  "description": "有序工作流：用户选一次，自动编排场景栈与能力，无需手选 MCP/专家",
+  "workflows": [
+    {
+      "workflow_id": "gp0-golden-path",
+      "label": "尽调有序全链",
+      "hint": "按顺序：标的速览 → 材料整理 → 财报深读 → 尽调报告；已自动配置连接器与专家",
+      "auto_orchestrate": true,
+      "orchestration": "sequential",
+      "reuse_policy": "session_cache_first",
+      "primary_expert": "ex-fs-dd",
+      "steps": [
+        { "label": "标的速览" },
+        { "label": "上传材料分析" },
+        { "label": "财报深读" },
+        { "label": "尽调报告" }
+      ]
+    }
+  ]
+}

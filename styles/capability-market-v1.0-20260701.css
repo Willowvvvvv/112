@@ -1,0 +1,228 @@
+/* 能力市场 · 对齐 agent-demo nav-sidebar 技能市场样式 */
+/* 版本: v1.0 | 日期: 2026-07-01 */
+
+.xb-feature-lead {
+  font-size: 13px;
+  color: var(--xb-muted);
+  margin: 0 0 20px;
+  line-height: 1.55;
+}
+
+.xb-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.xb-skill-card {
+  background: var(--xb-surface);
+  border: 1px solid var(--xb-line);
+  border-radius: var(--xb-radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  min-height: 100%;
+}
+
+.xb-skill-card strong {
+  font-size: 14px;
+  color: var(--xb-text);
+}
+
+.xb-skill-card p {
+  font-size: 12px;
+  color: var(--xb-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.xb-skill-card-meta {
+  font-size: 11px;
+  color: var(--xb-faint);
+  margin: 0;
+}
+
+.xb-skill-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.xb-skill-card-head-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.xb-skill-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 4px;
+  width: 100%;
+}
+
+.xb-market-add-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--xb-line);
+  color: var(--xb-muted);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.xb-market-add-btn:hover:not(:disabled) {
+  color: var(--xb-brand);
+  border-color: var(--xb-brand);
+  background: var(--xb-bg-soft);
+}
+
+.xb-market-add-btn.is-installed {
+  color: var(--xb-brand);
+  border-color: color-mix(in srgb, var(--xb-brand) 45%, var(--xb-line));
+  background: color-mix(in srgb, var(--xb-brand) 10%, transparent);
+}
+
+.xb-market-add-btn.is-installed:hover:not(:disabled) {
+  color: var(--color-danger);
+  border-color: color-mix(in srgb, var(--color-danger) 55%, var(--xb-line));
+  background: color-mix(in srgb, var(--color-danger) 8%, transparent);
+}
+
+.xb-mini-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: var(--xb-bg-soft);
+  color: var(--xb-muted);
+  border: 1px solid var(--xb-line);
+}
+
+.xb-mini-tag-official {
+  background: #eef3fb;
+  color: var(--xb-brand);
+  border-color: #c5d9f0;
+}
+
+.xb-mini-tag-my {
+  background: #f3f4f6;
+  color: var(--xb-text);
+}
+
+.xb-skills-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  border-radius: var(--xb-radius-md);
+  background: var(--xb-bg-soft);
+}
+
+.xb-skills-tab {
+  border: 0;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: var(--xb-radius-sm);
+  font-size: 13px;
+  color: var(--xb-muted);
+  cursor: pointer;
+}
+
+.xb-skills-tab.on {
+  background: var(--xb-surface);
+  color: var(--xb-brand);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.xb-market-kind-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.xb-market-kind-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--xb-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.xb-market-kind-tab.on {
+  background: var(--xb-text);
+  color: var(--xb-surface);
+  font-weight: 600;
+}
+
+.xb-skills-tabs-scope {
+  margin-bottom: 0;
+}
+
+.xb-skills-category-tabs {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.xb-market-skill-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.capability-market-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-bottom: 20px;
+}
+
+.capability-market-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.capability-market-scroll {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.feature-view--capability-market {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.xb-block-desc {
+  font-size: 13px;
+  color: var(--xb-muted);
+  margin: 0;
+  line-height: 1.55;
+}
