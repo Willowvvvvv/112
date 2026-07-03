@@ -1,0 +1,14 @@
+{
+  "name": "frontend-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "静态 frontend Playwright E2E",
+  "scripts": {
+    "test": "playwright test -c playwright.config.mjs",
+    "test:projects": "playwright test -c playwright.config.mjs project-interactions-v1.0-20260701.spec.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "playwright": "^1.52.0"
+  }
+}

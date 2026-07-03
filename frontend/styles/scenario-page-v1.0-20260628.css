@@ -1,0 +1,11 @@
+/**
+ * 尽调场景全页 — 补充样式（主样式在 components.css）
+ * 版本: v1.2 | 日期: 2026-06-29
+ */
+
+.scenario-page-lead {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}

@@ -1,0 +1,22 @@
+# 尽调宝 GitHub 发布排除清单（仅 frontend 静态 Demo）
+# 版本：v1.1 · 2026-07-03
+
+.DS_Store
+*.log
+.git
+.gh-pages-build
+.demo-source-staging
+.wrangler
+**/.wrangler
+node_modules
+**/node_modules
+.venv
+**/.venv
+__pycache__
+**/__pycache__
+*.pyc
+.env
+.env.*
+e2e/node_modules
+e2e/test-results
+admin

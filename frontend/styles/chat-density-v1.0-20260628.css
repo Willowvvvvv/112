@@ -1,0 +1,244 @@
+/**
+ * 对话区信息密度 · 收紧间距与排版，同屏展示更多内容
+ * 版本: v1.1 | 日期: 2026-06-29 | 对齐 agent-demo WebUI
+ */
+
+.messages,
+.xb-chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.25rem 0.125rem;
+}
+
+.chat-message-row,
+.xb-message-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+.chat-message-row--user,
+.xb-message-row--user {
+  align-items: flex-end;
+}
+
+.chat-message-row--assistant,
+.xb-message-row--assistant {
+  align-items: flex-start;
+}
+
+.msg-speaker,
+.xb-message-speaker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 0.25rem 0.125rem;
+}
+
+.msg-speaker--red,
+.xb-message-speaker--red {
+  color: #b42318;
+}
+
+.msg-speaker--blue,
+.xb-message-speaker--blue {
+  color: #175cd3;
+}
+
+.msg-speaker--host,
+.xb-message-speaker--host {
+  color: var(--color-text-secondary, #667085);
+}
+
+.chat-message-body,
+.xb-message-body {
+  border-radius: 0.625rem;
+  max-width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.chat-message-body--user,
+.xb-message-body--user {
+  width: fit-content;
+  padding: 0.5rem 0.75rem;
+  background: var(--secondary, var(--color-surface-secondary));
+  color: var(--color-text);
+  border: 0;
+}
+
+.chat-message-body--user .user-text {
+  margin: 0;
+}
+
+.chat-message-body--assistant,
+.xb-message-body--assistant {
+  width: 100%;
+  min-width: 100%;
+  padding: 0.625rem 0.75rem;
+}
+
+.chat-message-body--assistant .msg.agent,
+.xb-message-body--assistant .msg.agent {
+  padding: 0;
+  max-width: 100%;
+}
+
+.xb-message-body__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.msg.user.user-with-files,
+.msg.user.user-files {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.agent-text-wrap .agent-plain-text,
+.agent-text-wrap .agent-md,
+.xb-message-prose {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.agent-md p,
+.agent-md ul,
+.agent-md ol,
+.agent-md pre,
+.agent-md blockquote,
+.xb-message-prose :where(p, ul, ol, pre, blockquote) {
+  margin: 0.45em 0;
+}
+
+.agent-md h1,
+.xb-message-prose :where(h1) {
+  font-size: 1.2em;
+  margin: 0.75em 0 0.3em;
+}
+
+.agent-md h2,
+.xb-message-prose :where(h2) {
+  font-size: 1.1em;
+  margin: 0.75em 0 0.3em;
+}
+
+.agent-md h3,
+.agent-md h4,
+.xb-message-prose :where(h3, h4) {
+  font-size: 1em;
+  margin: 0.75em 0 0.3em;
+}
+
+.agent-md li,
+.xb-message-prose :where(li) {
+  margin: 0.1em 0;
+}
+
+.agent-md .md-table-wrap,
+.xb-message-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.agent-md .md-table,
+.xb-message-prose :where(table) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.agent-md .md-table th,
+.agent-md .md-table td,
+.xb-message-prose :where(th, td) {
+  border: 1px solid var(--color-border);
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+}
+
+.agent-md .md-inline-code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: var(--bg-soft);
+}
+
+.chat-message-meta,
+.xb-message-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  width: 100%;
+  padding: 0.125rem 0.25rem 0;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.chat-message-meta--user,
+.xb-message-meta--user {
+  justify-content: flex-end;
+}
+
+.chat-message-meta--assistant,
+.xb-message-meta--assistant {
+  justify-content: flex-start;
+}
+
+.chat-message-copy-btn,
+.xb-message-copy-btn {
+  width: 1.75rem;
+  height: 1.75rem;
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .chat-message-copy-btn,
+  .xb-message-copy-btn {
+    opacity: 0.5;
+  }
+
+  .chat-message-row:hover .chat-message-copy-btn,
+  .xb-message-row:hover .xb-message-copy-btn {
+    opacity: 1;
+    color: var(--color-text);
+  }
+}
+
+.chat-message-copy-btn:hover,
+.chat-message-copy-btn:focus-visible,
+.xb-message-copy-btn:hover,
+.xb-message-copy-btn:focus-visible {
+  opacity: 1;
+  color: var(--color-text);
+}
+
+.chat-ai-disclaimer,
+.xb-chat-ai-disclaimer {
+  width: 100%;
+  margin: 0;
+  padding: 0.375rem 0.5rem 0.125rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
