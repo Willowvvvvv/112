@@ -2634,6 +2634,18 @@
     return '<div class="po-field-item"><div class="po-field-label">' + esc(label) + '</div>'
       + '<div class="po-field-val-wrap">' + _underInput(saved, name, field, def) + '</div></div>';
   }
+  function _underFinByLabel(dr, label) {
+    var periods = dr.financialPeriods || [];
+    for (var i = 0; i < periods.length; i++) {
+      if (periods[i].label === label) {
+        return {
+          revenue: periods[i].revenue == null ? '—' : _fmtWan(periods[i].revenue),
+          netProfit: periods[i].netProfit == null ? '—' : _fmtWan(periods[i].netProfit)
+        };
+      }
+    }
+    return { revenue: '—', netProfit: '—' };
+  }
   function _underLatestFinDisplay(dr) {
     var periods = dr.financialPeriods || [];
     if (periods.length) {
@@ -2950,20 +2962,26 @@
           + '</div>';
       }
       var tableHtml = '<div class="po-table-shell po-table-shell-under"><table class="po-table po-under-table"><thead><tr>'
-        + '<th class="po-under-sticky">项目</th><th>首次投资</th><th>子基金对本金</th><th>持股</th><th>公允价值</th><th class="po-cell-num">收入</th><th class="po-cell-num">净利润</th><th>MOIC</th><th>状态</th>'
+        + '<th class="po-under-sticky">项目</th><th>首次投资</th><th>子基金对本金</th><th>持股</th><th>公允价值</th>'
+        + '<th class="po-cell-num" title="2025年度营业收入">25收入</th><th class="po-cell-num" title="2025年度净利润">25净利</th>'
+        + '<th class="po-cell-num" title="2026上半年营业收入">26H1收入</th><th class="po-cell-num" title="2026上半年净利润">26H1净利</th>'
+        + '<th>MOIC</th><th>状态</th>'
         + '</tr></thead><tbody>'
         + underRows.map(function (r) {
             var warn = _rowNeedsAction(r) ? ' po-row-warn' : '';
             var open = UNDER_DRAWER === r.name ? ' po-under-open' : '';
-            var finDisp = _underLatestFinDisplay(r);
-            return '<tr class="po-under-row' + warn + open + '" data-act="openUnderDrawer" data-arg="' + esc(r.name) + '">'
+            var fin25 = _underFinByLabel(r, '2025年度');
+            var fin26 = _underFinByLabel(r, '2026上半年');
+            return '<tr class="po-under-row' + warn + open + '" data-under-name="' + esc(r.name) + '">'
               + '<td class="po-under-sticky po-under-name"><strong>' + esc(r.name) + '</strong><small>' + esc(_underSavedVal(saved, r.name, 'industry', r.industry)) + '</small></td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'firstInvestDate', r.firstInvestDate) + '</td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'amount', r.amount) + '</td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'share', r.share) + '</td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'fv', r.fv) + '</td>'
-              + '<td class="po-cell-num po-under-fin-preview">' + esc(finDisp.revenue) + '</td>'
-              + '<td class="po-cell-num po-under-fin-preview">' + esc(finDisp.netProfit) + '</td>'
+              + '<td class="po-cell-num po-under-fin-preview">' + esc(fin25.revenue) + '</td>'
+              + '<td class="po-cell-num po-under-fin-preview">' + esc(fin25.netProfit) + '</td>'
+              + '<td class="po-cell-num po-under-fin-preview">' + esc(fin26.revenue) + '</td>'
+              + '<td class="po-cell-num po-under-fin-preview">' + esc(fin26.netProfit) + '</td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'moic', r.moic) + '</td>'
               + '<td onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'status', r.status) + '</td>'
               + '</tr>';
@@ -4623,6 +4641,15 @@
           var act = el.getAttribute('data-act');
           var arg = el.getAttribute('data-arg') || '';
           PE_POST_PAGES.act(act, arg);
+        });
+      });
+      /* 底层项目表：行点击开抽屉（委托，避免 tr 上 data-act 绑定失效） */
+      root.querySelectorAll('.po-table-shell-under tbody').forEach(function (tbody) {
+        tbody.addEventListener('click', function (e) {
+          var tr = e.target.closest ? e.target.closest('tr.po-under-row[data-under-name]') : null;
+          if (!tr) return;
+          if (e.target.closest('input,select,textarea,button,a,label')) return;
+          PE_POST_PAGES.act('openUnderDrawer', tr.getAttribute('data-under-name') || '');
         });
       });
       /* 候选字段点击 → 定位原文 */
