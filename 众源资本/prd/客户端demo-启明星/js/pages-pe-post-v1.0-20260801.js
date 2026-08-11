@@ -2634,6 +2634,17 @@
     return '<div class="po-field-item"><div class="po-field-label">' + esc(label) + '</div>'
       + '<div class="po-field-val-wrap">' + _underInput(saved, name, field, def) + '</div></div>';
   }
+  function _underLatestFinDisplay(dr) {
+    var periods = dr.financialPeriods || [];
+    if (periods.length) {
+      var latest = periods[periods.length - 1];
+      return {
+        revenue: latest.revenue == null ? '—' : _fmtWan(latest.revenue),
+        netProfit: latest.netProfit == null ? '—' : _fmtWan(latest.netProfit)
+      };
+    }
+    return { revenue: dr.revenue || '—', netProfit: dr.netProfit || '—' };
+  }
   function _underFinPeriodsHtml(saved, dr) {
     var periods = dr.financialPeriods || [];
     if (!periods.length) return '';
@@ -2645,8 +2656,8 @@
       var body = _underShortFieldHtml(saved, dr.name, '营业收入', revField, revDef)
         + _underShortFieldHtml(saved, dr.name, '净利润', npField, npDef);
       if (!body && !UNDER_SHOW_EMPTY) return '';
-      return '<div class="po-under-fin-period" style="margin-bottom:12px">'
-        + '<div style="font-size:12px;color:var(--xb-muted);margin-bottom:6px">' + esc(p.label) + '</div>'
+      return '<div class="po-under-fin-period">'
+        + '<div class="po-under-fin-period-label">' + esc(p.label) + '</div>'
         + '<div class="po-field-grid">' + body + '</div></div>';
     }).filter(Boolean).join('');
   }
@@ -2912,6 +2923,14 @@
         + (longItems.length ? '<div class="po-biz-section"><h4>文字摘要</h4>' + fieldGrid(longItems) + '</div>' : '');
     } else if (bizTab === '底层项目') {
       var allUnder = _fundUnderlyingRows();
+      if (CURRENT_CONFIRM === 'fp3' && !UNDER_DRAWER) {
+        for (var _fi = 0; _fi < allUnder.length; _fi++) {
+          if ((allUnder[_fi].financialPeriods || []).length) {
+            UNDER_DRAWER = allUnder[_fi].name;
+            break;
+          }
+        }
+      }
       var needN = allUnder.filter(_rowNeedsAction).length;
       var changedN = allUnder.filter(_rowHasChange).length;
       if (UNDER_FILTER === 'need') UNDER_FILTER = 'changed'; /* 旧「要处理」筛已取消，回落到本季有变动 */
@@ -2939,17 +2958,20 @@
           + '</div>';
       }
       var tableHtml = '<div class="po-table-shell po-table-shell-under"><table class="po-table po-under-table"><thead><tr>'
-        + '<th class="po-under-sticky">项目</th><th>首次投资</th><th>子基金对本金</th><th>持股</th><th>公允价值</th><th>MOIC</th><th>状态</th>'
+        + '<th class="po-under-sticky">项目</th><th>首次投资</th><th>子基金对本金</th><th>持股</th><th>公允价值</th><th class="po-cell-num">收入</th><th class="po-cell-num">净利润</th><th>MOIC</th><th>状态</th>'
         + '</tr></thead><tbody>'
         + underRows.map(function (r) {
             var warn = _rowNeedsAction(r) ? ' po-row-warn' : '';
             var open = UNDER_DRAWER === r.name ? ' po-under-open' : '';
+            var finDisp = _underLatestFinDisplay(r);
             return '<tr class="po-under-row' + warn + open + '" data-act="openUnderDrawer" data-arg="' + esc(r.name) + '">'
               + '<td class="po-under-sticky po-under-name"><strong>' + esc(r.name) + '</strong><small>' + esc(_underSavedVal(saved, r.name, 'industry', r.industry)) + '</small></td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'firstInvestDate', r.firstInvestDate) + '</td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'amount', r.amount) + '</td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'share', r.share) + '</td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'fv', r.fv) + '</td>'
+              + '<td class="po-cell-num po-under-fin-preview">' + esc(finDisp.revenue) + '</td>'
+              + '<td class="po-cell-num po-under-fin-preview">' + esc(finDisp.netProfit) + '</td>'
               + '<td class="po-cell-num" onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'moic', r.moic) + '</td>'
               + '<td onclick="event.stopPropagation()">' + _underInput(saved, r.name, 'status', r.status) + '</td>'
               + '</tr>';
