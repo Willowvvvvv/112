@@ -1,0 +1,611 @@
+/* 启明星长时间阅读可读性 v1.1 · 对齐《启明星-设计规范-v1.1-20260808》§1 / §2 / §16
+   须排在 pe-post 之后加载，覆盖色板与字阶；密度 / 外观由 html[data-density][data-theme] 切换 */
+
+:root {
+  --po-page: #f5f5f7;
+  --po-bg: #fbfbfa;
+  --po-bg-2: #eeeeef;
+  --po-bg-3: #e6e6e8;
+  --po-ink: #2c2c2e;
+  --po-ink-2: #3d3d40;
+  --po-gray: #656a71;
+  --po-gray-2: #8a8f98;
+  --po-on-ink: #fbfbfa;
+  --po-line: #e2e2e6;
+  --po-line-2: #d0d0d5;
+  --po-accent: #2c2c2e;
+  --po-accent-hover: #1c1c1e;
+  --po-danger: #2c2c2e;
+  --po-danger-bg: #eeeeef;
+
+  --po-fs-display: 36px;
+  --po-fs-h1: 24px;
+  --po-fs-h2: 16px;
+  --po-fs-h3: 15px;
+  --po-fs-body-l: 14px;
+  --po-fs-body: 14px;
+  --po-fs-caption: 12px;
+  --po-fs-tiny: 12px;
+  --po-lh-title: 1.2;
+  --po-lh-body: 1.65;
+  --po-lh-table: 1.5;
+  --po-cell-pad-y: 10px;
+  --po-cell-pad-x: 12px;
+  --po-diff-bg: #fdf5f2;
+  --po-diff-bg-2: #fbeee9;
+  --po-diff-line: #f0d9d1;
+  --po-hi-bg: #e4e4e6;
+  --po-ok-soft-bg: #eef7f1;
+  --po-ok-soft-fg: #15803d;
+  --po-warn-soft-bg: #fff8e1;
+  --po-warn-soft-fg: #a0700a;
+  --po-info-soft-bg: #eef3ff;
+  --po-info-soft-fg: #2553c7;
+  --po-danger-soft-fg: #b43b22;
+
+  --xb-bg: var(--po-bg);
+  --xb-color-bg: var(--po-page);
+  --po-ink-3: var(--po-gray);
+  --po-border: var(--po-line);
+  --xb-surface: var(--po-bg);
+  --xb-bg-soft: var(--po-bg-2);
+  --xb-text: var(--po-ink);
+  --xb-color-text: var(--po-ink);
+  --xb-muted: var(--po-ink-2);
+  --xb-color-text-secondary: var(--po-ink-2);
+  --xb-faint: var(--po-gray);
+  --xb-color-text-muted: var(--po-gray);
+  --xb-line: var(--po-line);
+  --xb-color-border: var(--po-line);
+  --xb-line-soft: var(--po-bg-2);
+  --xb-color-primary: var(--po-ink);
+  --xb-color-primary-hover: var(--po-accent-hover);
+  --xb-color-primary-muted: var(--po-bg-2);
+  --xb-brand: var(--po-ink);
+  --xb-accent: var(--po-ink);
+  --xb-danger: var(--po-ink);
+}
+
+html[data-density="comfortable"] {
+  --po-fs-h2: 17px;
+  --po-fs-h3: 16px;
+  --po-fs-body-l: 15px;
+  --po-fs-body: 15px;
+  --po-fs-caption: 13px;
+  --po-fs-tiny: 12px;
+  --po-lh-body: 1.7;
+  --po-lh-table: 1.6;
+  --po-cell-pad-y: 12px;
+  --po-cell-pad-x: 14px;
+}
+
+html[data-density="compact"] {
+  --po-fs-h2: 16px;
+  --po-fs-h3: 15px;
+  --po-fs-body-l: 13px;
+  --po-fs-body: 13px;
+  --po-fs-caption: 12px;
+  --po-fs-tiny: 12px;
+  --po-lh-body: 1.5;
+  --po-lh-table: 1.45;
+  --po-cell-pad-y: 8px;
+  --po-cell-pad-x: 10px;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --po-page: #1c1c1e;
+  --po-bg: #2c2c2e;
+  --po-bg-2: #3a3a3c;
+  --po-bg-3: #48484a;
+  --po-ink: #e5e5e7;
+  --po-ink-2: #d1d1d6;
+  --po-gray: #c7c7cc;
+  --po-gray-2: #a1a1a6;
+  --po-on-ink: #1c1c1e;
+  --po-line: #3a3a3c;
+  --po-line-2: #48484a;
+  --po-accent: #e5e5e7;
+  --po-accent-hover: #ffffff;
+  --po-danger: #e5e5e7;
+  --po-danger-bg: #3a3a3c;
+  --xb-green: #34d399;
+  --ok: #34d399;
+  --ok-bg: #16382a;
+  --warn: #fbbf24;
+  --warn-bg: #3a2e14;
+  --po-diff-bg: #3a2a26;
+  --po-diff-bg-2: #4a322c;
+  --po-diff-line: #6a4a42;
+  --po-hi-bg: #48484a;
+  --po-ok-soft-bg: #16382a;
+  --po-ok-soft-fg: #34d399;
+  --po-warn-soft-bg: #3a2e14;
+  --po-warn-soft-fg: #fbbf24;
+  --po-info-soft-bg: #1e2a44;
+  --po-info-soft-fg: #93c5fd;
+  --po-danger-soft-fg: #fca5a5;
+}
+
+html, body {
+  background: var(--po-page);
+  color: var(--po-ink);
+  font-size: var(--po-fs-body);
+  line-height: var(--po-lh-body);
+  -webkit-font-smoothing: auto;
+}
+
+body,
+.main,
+.po-page,
+.login-screen,
+.page-scroll {
+  background: var(--po-page);
+  color: var(--po-ink);
+}
+
+.sidebar,
+.user-menu-pop,
+.login-card,
+.app-breadcrumb-bar {
+  background: var(--po-bg);
+  color: var(--po-ink);
+}
+
+.app-breadcrumb-bar {
+  background: var(--po-bg-2);
+  color: var(--po-gray);
+}
+
+.po-page {
+  background: var(--po-page);
+  color: var(--po-ink);
+}
+
+.po-toolbar,
+.po-panel,
+.po-list-row,
+.po-stat,
+.po-table,
+.po-composer,
+.po-card {
+  background: var(--po-bg);
+}
+
+.po-table {
+  font-size: var(--po-fs-body);
+  line-height: var(--po-lh-table);
+}
+.po-table th,
+.po-table td {
+  padding: var(--po-cell-pad-y) var(--po-cell-pad-x);
+}
+
+.po-panel-bd,
+.po-expert-exp,
+.po-skill-desc,
+.po-debate-point-d,
+.po-verdict-item,
+.po-empty,
+.composer-textarea,
+.po-input {
+  line-height: var(--po-lh-body);
+}
+
+.btn-primary,
+.po-btn-primary,
+.po-input-btn,
+.po-row-badge-strong,
+.po-tag-stage-post,
+.po-stage.active,
+.po-fin-wb-tab.active,
+.po-confirm-header,
+.po-confirm-back,
+.po-source-chip.active > span,
+.po-file-ext,
+.po-qa-question::before,
+.po-nd-tip,
+.po-doc-table .po-doc-hi:hover,
+.po-doc-table .po-doc-hi.active,
+.po-tab.on,
+.sidebar-nav a.on,
+.po-send,
+.po-chat-send,
+.po-msg-bubble-user,
+.po-parse-mode-btn.active,
+.po-parse-pending-n,
+.po-space-save,
+.po-snap-dim.is-on,
+.po-snap-tab.active span,
+.po-fin-cfg-opt.active,
+.po-fin-stmt.active,
+.po-fin-tpl-opt.active {
+  color: var(--po-on-ink);
+}
+.po-btn-primary:hover,
+.po-chat-send:hover {
+  background: var(--po-accent-hover);
+  border-color: var(--po-accent-hover);
+  color: var(--po-on-ink);
+}
+
+/* 账户菜单 · 显示设置 */
+.user-menu-display {
+  padding: 8px 10px 6px;
+  border-top: 1px solid var(--po-line);
+  margin-top: 4px;
+}
+.user-menu-label {
+  font-size: var(--po-fs-caption);
+  color: var(--po-gray);
+  margin: 6px 0 5px;
+}
+.user-menu-seg {
+  display: flex;
+  gap: 4px;
+}
+.user-menu-seg button {
+  flex: 1;
+  min-width: 0;
+  padding: 5px 0;
+  border: 1px solid var(--po-line-2);
+  border-radius: 6px;
+  background: var(--po-bg);
+  color: var(--po-ink-2);
+  font-size: var(--po-fs-caption);
+  font-weight: 500;
+}
+.user-menu-seg button:hover {
+  border-color: var(--po-ink);
+  color: var(--po-ink);
+}
+.user-menu-seg button.is-on {
+  background: var(--po-ink);
+  border-color: var(--po-ink);
+  color: var(--po-on-ink);
+}
+
+/* 文件解析详情 / 确认页：长时间对读，比全站默认再升一档 */
+.po-page-confirm {
+  --po-fs-tiny: 13px;
+  --po-fs-caption: 14px;
+  --po-fs-body: 15px;
+  --po-fs-body-l: 15px;
+  --po-fs-h3: 16px;
+  --po-lh-body: 1.7;
+  --po-lh-table: 1.55;
+}
+html[data-density="comfortable"] .po-page-confirm {
+  --po-fs-tiny: 14px;
+  --po-fs-caption: 15px;
+  --po-fs-body: 16px;
+  --po-fs-body-l: 16px;
+  --po-fs-h3: 17px;
+}
+html[data-density="compact"] .po-page-confirm {
+  --po-fs-tiny: 12px;
+  --po-fs-caption: 13px;
+  --po-fs-body: 14px;
+  --po-fs-body-l: 14px;
+}
+.po-page-confirm .po-doc-table,
+.po-page-confirm .po-doc-row td,
+.po-page-confirm .po-fin-preview-table,
+.po-page-confirm .po-fin-matrix,
+.po-page-confirm .po-fin-matrix-name strong,
+.po-page-confirm .po-fin-matrix-name small,
+.po-page-confirm .po-fin-matrix-input,
+.po-page-confirm .po-fin-period-trigger strong,
+.po-page-confirm .po-fin-period-trigger span,
+.po-page-confirm .po-fin-trial-panel table,
+.po-page-confirm .po-fin-trial-panel td button,
+.po-page-confirm .po-tb-formula,
+.po-page-confirm .po-ca-matrix,
+.po-page-confirm .po-ca-matrix th,
+.po-page-confirm .po-ca-loc,
+.po-page-confirm .po-result-input,
+.po-page-confirm .po-result-label,
+.po-page-confirm .po-field-label,
+.po-page-confirm .po-field-src,
+.po-page-confirm .po-field-locate,
+.po-page-confirm .po-biz-section h4,
+.po-page-confirm .po-file-item {
+  font-size: var(--po-fs-body);
+}
+.po-page-confirm .po-doc-table td,
+.po-page-confirm .po-doc-row td,
+.po-page-confirm .po-fin-preview-table td {
+  padding: 8px 12px;
+}
+.po-page-confirm .po-result-input {
+  padding: 8px 10px;
+  line-height: 1.55;
+}
+.po-page-confirm .po-field-act {
+  height: 30px;
+  font-size: var(--po-fs-body);
+}
+.po-page-confirm .po-src-badge {
+  width: 18px;
+  height: 18px;
+  font-size: var(--po-fs-tiny);
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.po-page-confirm .po-result-head {
+  background: var(--po-bg);
+}
+
+/* 文件解析详情 · 深色：清掉写死浅粉底 / 浅高亮，避免浅字叠浅底 */
+html[data-theme="dark"] .po-page-confirm .po-doc-table .po-doc-hi {
+  background: var(--po-hi-bg);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm td.po-doc-hi:hover,
+html[data-theme="dark"] .po-page-confirm td.po-doc-hi.active,
+html[data-theme="dark"] .po-page-confirm .po-doc-table .po-doc-hi:hover,
+html[data-theme="dark"] .po-page-confirm .po-doc-table .po-doc-hi.active {
+  background: var(--po-ink) !important;
+  color: var(--po-on-ink) !important;
+  outline-color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-source-chip.active > span,
+html[data-theme="dark"] .po-page-confirm .po-src-badge:hover,
+html[data-theme="dark"] .po-page-confirm .po-file-ext {
+  color: var(--po-on-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-doc-row.po-doc-diff td,
+html[data-theme="dark"] .po-page-confirm .po-field-row.po-field-diff,
+html[data-theme="dark"] .po-page-confirm .po-field-diffnote,
+html[data-theme="dark"] .po-page-confirm .po-result-row.diff,
+html[data-theme="dark"] .po-page-confirm .po-trial-bar.po-trial-fail,
+html[data-theme="dark"] .po-page-confirm .po-total-check.fail,
+html[data-theme="dark"] .po-page-confirm .po-tb-card.warn,
+html[data-theme="dark"] .po-page-confirm .po-fin-trial-panel tr.warn,
+html[data-theme="dark"] .po-page-confirm .po-fin-preview-table .po-doc-row.active td:not(.po-doc-hi) {
+  background: var(--po-diff-bg);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-doc-row.po-doc-diff .po-doc-k,
+html[data-theme="dark"] .po-page-confirm .po-field-row.po-field-diff:hover {
+  background: var(--po-diff-bg-2);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-field-row.po-field-active,
+html[data-theme="dark"] .po-page-confirm .po-field-row.po-field-ok {
+  background: var(--po-bg-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-result-head,
+html[data-theme="dark"] .po-page-confirm .po-biz-sticky {
+  background: var(--po-bg);
+}
+html[data-theme="dark"] .po-page-confirm .po-preview-toggle:hover,
+html[data-theme="dark"] .po-page-confirm .po-preview-toggle.is-collapsed {
+  background: var(--po-bg-2);
+  border-color: var(--po-line);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-field-conflict {
+  background: var(--po-diff-bg);
+  border-color: var(--po-diff-line);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-conflict-badge,
+html[data-theme="dark"] .po-page-confirm .po-tb-error {
+  background: var(--po-diff-bg-2);
+  color: var(--po-danger-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-conflict-row.adopted {
+  background: transparent;
+}
+html[data-theme="dark"] .po-page-confirm .po-conflict-val:hover {
+  color: var(--po-ink);
+  border-color: var(--po-ink-2);
+  background: var(--po-bg-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-conflict-val.on,
+html[data-theme="dark"] .po-page-confirm .po-tb-side.on {
+  background: var(--po-ink);
+  border-color: var(--po-ink);
+  color: var(--po-on-ink, #fff);
+  text-decoration: none;
+}
+html[data-theme="dark"] .po-page-confirm .po-tb-side.on em,
+html[data-theme="dark"] .po-page-confirm .po-tb-side.on strong {
+  color: var(--po-on-ink, #fff);
+}
+html[data-theme="dark"] .po-page-confirm .po-tb-pos:hover {
+  color: var(--po-info-soft-fg);
+  text-decoration-color: var(--po-info-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-agg-banner-warn,
+html[data-theme="dark"] .po-page-confirm .po-fin-filter-bar,
+html[data-theme="dark"] .po-page-confirm .po-fin-trial-btn.fail.active,
+html[data-theme="dark"] .po-page-confirm .po-tb-sum-fail {
+  background: var(--po-diff-bg);
+  color: var(--po-danger-soft-fg);
+  border-color: var(--po-diff-line);
+}
+html[data-theme="dark"] .po-page-confirm .po-tb-sum-fail strong,
+html[data-theme="dark"] .po-page-confirm .po-fin-filter-info strong.warn,
+html[data-theme="dark"] .po-page-confirm .po-fin-check-warn,
+html[data-theme="dark"] .po-page-confirm .po-total-check.fail .po-total-diff {
+  color: var(--po-danger-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-agg-banner-info {
+  background: var(--po-info-soft-bg);
+  color: var(--po-info-soft-fg);
+  border-color: var(--po-line-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-trial-btn.pass.active,
+html[data-theme="dark"] .po-page-confirm .po-tb-sum-pass {
+  background: var(--po-ok-soft-bg);
+  color: var(--po-ok-soft-fg);
+  border-color: var(--po-line-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-ca-check {
+  background: var(--po-ok-soft-bg);
+  color: var(--po-ink-2);
+  border-color: var(--po-line-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-tb-sum-pass strong,
+html[data-theme="dark"] .po-page-confirm .po-tb-ok,
+html[data-theme="dark"] .po-page-confirm .po-fin-check-pass,
+html[data-theme="dark"] .po-page-confirm .po-ca-check-pass,
+html[data-theme="dark"] .po-page-confirm .po-entity-done {
+  color: var(--po-ok-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix thead th,
+html[data-theme="dark"] .po-page-confirm .po-ca-matrix th,
+html[data-theme="dark"] .po-page-confirm .po-tm-cmp-table th,
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-row.total td,
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-empty td {
+  background: var(--po-bg-2);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-row.warn td {
+  background: var(--po-diff-bg);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-row.warn .po-fin-matrix-name {
+  box-shadow: inset 3px 0 0 var(--po-danger-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-input {
+  background: transparent;
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-row.warn .po-fin-matrix-input {
+  background: var(--po-diff-bg);
+  color: var(--po-ink);
+  border-color: var(--po-diff-line) !important;
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-preview-section td,
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-section td {
+  background: var(--po-bg-2) !important;
+  color: var(--po-ink) !important;
+}
+html[data-theme="dark"] .po-page-confirm .po-tag-ftype-scan {
+  background: var(--po-bg-3);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-period-trigger:hover,
+html[data-theme="dark"] .po-page-confirm .po-fin-period-trigger.active {
+  background: var(--po-bg-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-ca-matrix tr.total td,
+html[data-theme="dark"] .po-page-confirm .po-tb-period,
+html[data-theme="dark"] .po-page-confirm .po-tb-period-note,
+html[data-theme="dark"] .po-page-confirm .po-tb-pos:hover,
+html[data-theme="dark"] .po-page-confirm .po-ext-tag {
+  background: var(--po-info-soft-bg);
+  color: var(--po-info-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-cell-derived,
+html[data-theme="dark"] .po-page-confirm .po-fin-cell-derived .po-fin-matrix-input {
+  background: var(--po-warn-soft-bg);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-th-derived .po-fin-period-trigger span {
+  color: var(--po-warn-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-entity-banner,
+html[data-theme="dark"] .po-page-confirm .po-entity-row.unmatched {
+  background: var(--po-bg-2);
+  border-color: var(--po-line);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-entity-banner {
+  border-left-color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-tag.po-entity-ok,
+html[data-theme="dark"] .po-page-confirm .po-tag-ok {
+  background: var(--po-ok-soft-bg);
+  color: var(--po-ok-soft-fg);
+  border-color: var(--po-line-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-tag.po-entity-warn {
+  background: var(--po-bg-3);
+  color: var(--po-ink);
+  border-color: var(--po-line-2);
+}
+html[data-theme="dark"] .po-page-confirm input,
+html[data-theme="dark"] .po-page-confirm textarea,
+html[data-theme="dark"] .po-page-confirm select {
+  color: var(--po-ink);
+  caret-color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-result-input,
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-input,
+html[data-theme="dark"] .po-page-confirm .po-fin-input,
+html[data-theme="dark"] .po-page-confirm .po-fin-cell-input {
+  color: var(--po-ink);
+  background: transparent;
+}
+html[data-theme="dark"] .po-page-confirm .po-result-input.is-uncertain,
+html[data-theme="dark"] .po-page-confirm .po-fin-cell-input.is-uncertain,
+html[data-theme="dark"] .po-page-confirm select.po-result-input.is-uncertain {
+  background: var(--po-warn-soft-bg);
+  border-color: var(--po-line-2);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-uncertain-info {
+  background: var(--po-bg-2);
+  border-color: var(--po-line);
+  color: var(--po-ink-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-uncertain-swatch {
+  background: var(--po-warn-soft-bg);
+  border-color: var(--po-line-2);
+}
+html[data-theme="dark"] .po-page-confirm .po-result-input:focus,
+html[data-theme="dark"] .po-page-confirm .po-fin-matrix-input:focus {
+  background: var(--po-bg);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-confirm-header,
+html[data-theme="dark"] .po-page-confirm .po-confirm-back {
+  color: var(--po-on-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-confirm-back:hover {
+  background: rgba(0, 0, 0, .12);
+}
+html[data-theme="dark"] .po-page-confirm .po-row-warn td,
+html[data-theme="dark"] .po-page-confirm .po-cell-pending {
+  background: var(--po-warn-soft-bg);
+  color: var(--po-ink);
+}
+html[data-theme="dark"] .po-page-confirm .po-tm-banner,
+html[data-theme="dark"] .po-page-confirm .po-fin-trial-toggle {
+  background: var(--po-diff-bg);
+  border-color: var(--po-diff-line);
+  color: var(--po-danger-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-fin-trial-toggle.active {
+  background: #9f2d19;
+  color: #fff;
+  border-color: #9f2d19;
+}
+html[data-theme="dark"] .po-page-confirm .po-tm-up {
+  color: var(--po-ok-soft-fg);
+}
+html[data-theme="dark"] .po-page-confirm .po-tb-card.warn .po-tb-no,
+html[data-theme="dark"] .po-page-confirm .po-fin-trial-btn b {
+  color: #fff;
+}
+html[data-theme="dark"] .po-page-confirm ::placeholder {
+  color: var(--po-gray-2);
+}
+
+/* Toast：深色下用浅底深字，避免近白底 + 白字看不清 */
+html[data-theme="dark"] .toast {
+  background: #f5f5f7;
+  color: #1c1c1e;
+  border-color: rgba(255, 255, 255, .14);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .45);
+}
+
+html[data-theme="dark"] .po-archive-pick-mask { background: rgba(0, 0, 0, .55); }
+html[data-theme="dark"] .po-archive-pick { background: var(--po-bg); border-color: var(--po-line); }
+html[data-theme="dark"] .po-archive-pick-search input { background: var(--po-bg-2); color: var(--po-ink); border-color: var(--po-line); }
+html[data-theme="dark"] .po-archive-pick-list:hover,
+html[data-theme="dark"] .po-archive-pick-list:focus-within { scrollbar-color: rgba(245, 245, 247, .28) transparent; }

@@ -1,0 +1,849 @@
+{
+  "nodes": [
+    {
+      "id": "ai",
+      "parentId": null,
+      "label": "人工智能",
+      "layer": "root",
+      "order": 0
+    },
+    {
+      "id": "base",
+      "parentId": "ai",
+      "label": "人工智能基础层",
+      "layer": "base",
+      "order": 1
+    },
+    {
+      "id": "tech",
+      "parentId": "ai",
+      "label": "人工智能技术层",
+      "layer": "tech",
+      "order": 19
+    },
+    {
+      "id": "app",
+      "parentId": "ai",
+      "label": "人工智能应用层",
+      "layer": "app",
+      "order": 35
+    },
+    {
+      "id": "base-hw",
+      "parentId": "base",
+      "label": "基础硬件",
+      "layer": "base",
+      "order": 2
+    },
+    {
+      "id": "base-compute",
+      "parentId": "base",
+      "label": "算力及数据支撑",
+      "layer": "base",
+      "order": 10
+    },
+    {
+      "id": "tech-algo",
+      "parentId": "tech",
+      "label": "技术",
+      "layer": "tech",
+      "order": 20
+    },
+    {
+      "id": "tech-plat",
+      "parentId": "tech",
+      "label": "平台与工具",
+      "layer": "tech",
+      "order": 30
+    },
+    {
+      "id": "app-device",
+      "parentId": "app",
+      "label": "人工智能终端产品",
+      "layer": "app",
+      "order": 36
+    },
+    {
+      "id": "app-scene",
+      "parentId": "app",
+      "label": "人工智能应用场景",
+      "layer": "app",
+      "order": 43
+    },
+    {
+      "id": "chip",
+      "parentId": "base-hw",
+      "label": "人工智能芯片",
+      "layer": "base",
+      "order": 3
+    },
+    {
+      "id": "sensor",
+      "parentId": "base-hw",
+      "label": "传感器",
+      "layer": "base",
+      "order": 8
+    },
+    {
+      "id": "server",
+      "parentId": "base-hw",
+      "label": "服务器",
+      "layer": "base",
+      "order": 9
+    },
+    {
+      "id": "cloud",
+      "parentId": "base-compute",
+      "label": "云计算服务",
+      "layer": "base",
+      "order": 11
+    },
+    {
+      "id": "privacy",
+      "parentId": "base-compute",
+      "label": "隐私计算",
+      "layer": "base",
+      "order": 12
+    },
+    {
+      "id": "edge",
+      "parentId": "base-compute",
+      "label": "边缘计算",
+      "layer": "base",
+      "order": 13
+    },
+    {
+      "id": "idc",
+      "parentId": "base-compute",
+      "label": "IDC服务",
+      "layer": "base",
+      "order": 14
+    },
+    {
+      "id": "data",
+      "parentId": "base-compute",
+      "label": "数据服务",
+      "layer": "base",
+      "order": 15
+    },
+    {
+      "id": "ml",
+      "parentId": "tech-algo",
+      "label": "机器学习算法",
+      "layer": "tech",
+      "order": 21
+    },
+    {
+      "id": "brain",
+      "parentId": "tech-algo",
+      "label": "类脑算法",
+      "layer": "tech",
+      "order": 22
+    },
+    {
+      "id": "nlp",
+      "parentId": "tech-algo",
+      "label": "自然语言处理",
+      "layer": "tech",
+      "order": 23
+    },
+    {
+      "id": "speech",
+      "parentId": "tech-algo",
+      "label": "语音识别",
+      "layer": "tech",
+      "order": 24
+    },
+    {
+      "id": "cv",
+      "parentId": "tech-algo",
+      "label": "计算机视觉",
+      "layer": "tech",
+      "order": 25
+    },
+    {
+      "id": "kg",
+      "parentId": "tech-algo",
+      "label": "知识图谱平台",
+      "layer": "tech",
+      "order": 26
+    },
+    {
+      "id": "av-algo",
+      "parentId": "tech-algo",
+      "label": "自动驾驶算法",
+      "layer": "tech",
+      "order": 27
+    },
+    {
+      "id": "mt",
+      "parentId": "tech-algo",
+      "label": "机器翻译",
+      "layer": "tech",
+      "order": 28
+    },
+    {
+      "id": "recommend",
+      "parentId": "tech-algo",
+      "label": "内容推荐算法",
+      "layer": "tech",
+      "order": 29
+    },
+    {
+      "id": "open-plat",
+      "parentId": "tech-plat",
+      "label": "人工智能开放平台",
+      "layer": "tech",
+      "order": 31
+    },
+    {
+      "id": "llm",
+      "parentId": "tech-plat",
+      "label": "人工智能大模型",
+      "layer": "tech",
+      "order": 32
+    },
+    {
+      "id": "robot",
+      "parentId": "app-device",
+      "label": "机器人",
+      "layer": "app",
+      "order": 37
+    },
+    {
+      "id": "smart-home",
+      "parentId": "app-device",
+      "label": "智能家居产品",
+      "layer": "app",
+      "order": 38
+    },
+    {
+      "id": "smart-sec",
+      "parentId": "app-device",
+      "label": "智能安防产品",
+      "layer": "app",
+      "order": 39
+    },
+    {
+      "id": "consumer-elec",
+      "parentId": "app-device",
+      "label": "消费电子设备",
+      "layer": "app",
+      "order": 40
+    },
+    {
+      "id": "logistics",
+      "parentId": "app-device",
+      "label": "物流智能设备",
+      "layer": "app",
+      "order": 41
+    },
+    {
+      "id": "av-car",
+      "parentId": "app-device",
+      "label": "自动驾驶汽车",
+      "layer": "app",
+      "order": 42
+    },
+    {
+      "id": "edu",
+      "parentId": "app-scene",
+      "label": "智慧教育",
+      "layer": "app",
+      "order": 44
+    },
+    {
+      "id": "city",
+      "parentId": "app-scene",
+      "label": "智慧城市",
+      "layer": "app",
+      "order": 45
+    },
+    {
+      "id": "agri",
+      "parentId": "app-scene",
+      "label": "智慧农业",
+      "layer": "app",
+      "order": 46
+    },
+    {
+      "id": "medical",
+      "parentId": "app-scene",
+      "label": "智慧医疗",
+      "layer": "app",
+      "order": 47
+    },
+    {
+      "id": "manufacture",
+      "parentId": "app-scene",
+      "label": "智慧制造",
+      "layer": "app",
+      "order": 48
+    },
+    {
+      "id": "transport",
+      "parentId": "app-scene",
+      "label": "智慧交通",
+      "layer": "app",
+      "order": 49
+    },
+    {
+      "id": "finance",
+      "parentId": "app-scene",
+      "label": "智慧金融",
+      "layer": "app",
+      "order": 50
+    },
+    {
+      "id": "media",
+      "parentId": "app-scene",
+      "label": "智能传媒",
+      "layer": "app",
+      "order": 51
+    },
+    {
+      "id": "chip-cpu",
+      "parentId": "chip",
+      "label": "CPU芯片",
+      "layer": "base",
+      "order": 4
+    },
+    {
+      "id": "chip-gpu",
+      "parentId": "chip",
+      "label": "GPU(图形处理器)",
+      "layer": "base",
+      "order": 5
+    }
+  ],
+  "companies": [
+    {
+      "id": "nvidia",
+      "name": "NVIDIA",
+      "nodeId": "chip-gpu",
+      "stage": "listed",
+      "marketPower": "dominant",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "amd",
+      "name": "AMD",
+      "nodeId": "chip-gpu",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "biren",
+      "name": "壁仞科技",
+      "nodeId": "chip-gpu",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "amber",
+      "riskSummary": "公开面有待关注诉讼/纠纷线索（须核验）",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "suiyuan",
+      "name": "燧原科技",
+      "nodeId": "chip-gpu",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "moorethreads",
+      "name": "摩尔线程",
+      "nodeId": "chip-gpu",
+      "stage": "growth",
+      "marketPower": "niche",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "haiguang",
+      "name": "海光信息",
+      "nodeId": "chip-cpu",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "tianshuzixin",
+      "name": "天数智芯",
+      "nodeId": "chip-gpu",
+      "stage": "growth",
+      "marketPower": "niche",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "metax",
+      "name": "沐曦集成电路",
+      "nodeId": "chip-gpu",
+      "stage": "growth",
+      "marketPower": "niche",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "aws",
+      "name": "AWS",
+      "nodeId": "cloud",
+      "stage": "listed",
+      "marketPower": "dominant",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "azure",
+      "name": "Microsoft Azure",
+      "nodeId": "cloud",
+      "stage": "listed",
+      "marketPower": "dominant",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "gcp",
+      "name": "Google Cloud",
+      "nodeId": "cloud",
+      "stage": "listed",
+      "marketPower": "dominant",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "aliyun",
+      "name": "阿里云",
+      "nodeId": "cloud",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "tencent-cloud",
+      "name": "腾讯云",
+      "nodeId": "cloud",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "huawei-cloud",
+      "name": "华为云",
+      "nodeId": "cloud",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "baidu-cloud",
+      "name": "百度智能云",
+      "nodeId": "cloud",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "volcengine",
+      "name": "火山引擎",
+      "nodeId": "cloud",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "huggingface",
+      "name": "HuggingFace",
+      "nodeId": "open-plat",
+      "stage": "growth",
+      "marketPower": "dominant",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "nodeId": "open-plat",
+      "stage": "early",
+      "marketPower": "strong",
+      "riskLevel": "amber",
+      "riskSummary": "公开面有待关注诉讼/纠纷线索（须核验）",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "modelscope",
+      "name": "魔搭 ModelScope",
+      "nodeId": "open-plat",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "paddlepaddle",
+      "name": "飞桨 PaddlePaddle",
+      "nodeId": "open-plat",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "mindspore",
+      "name": "MindSpore",
+      "nodeId": "open-plat",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "llamaindex",
+      "name": "LlamaIndex",
+      "nodeId": "open-plat",
+      "stage": "early",
+      "marketPower": "moderate",
+      "riskLevel": "amber",
+      "riskSummary": "公开面有待关注诉讼/纠纷线索（须核验）",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "vertex-ai",
+      "name": "Google Vertex AI",
+      "nodeId": "open-plat",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "dify",
+      "name": "Dify",
+      "nodeId": "open-plat",
+      "stage": "early",
+      "marketPower": "moderate",
+      "riskLevel": "amber",
+      "riskSummary": "公开面有待关注诉讼/纠纷线索（须核验）",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "wandb",
+      "name": "Weights & Biases",
+      "nodeId": "open-plat",
+      "stage": "growth",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "nodeId": "nlp",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "iflytek",
+      "name": "科大讯飞",
+      "nodeId": "speech",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "sensetime",
+      "name": "商汤科技",
+      "nodeId": "cv",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "megvii",
+      "name": "旷视科技",
+      "nodeId": "cv",
+      "stage": "pre-ipo",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "cloudwalk",
+      "name": "云从科技",
+      "nodeId": "cv",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "red",
+      "riskSummary": "公开面见被执行/诉讼相关记录（须核验）",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "4paradigm",
+      "name": "第四范式",
+      "nodeId": "ml",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "midjourney",
+      "name": "Midjourney",
+      "nodeId": "media",
+      "stage": "growth",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "stability-ai",
+      "name": "Stability AI",
+      "nodeId": "media",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "amber",
+      "riskSummary": "公开面有待关注诉讼/纠纷线索（须核验）",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "character-ai",
+      "name": "Character.AI",
+      "nodeId": "media",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "amber",
+      "riskSummary": "公开面有待关注诉讼/纠纷线索（须核验）",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "yiyan-health",
+      "name": "医渡科技",
+      "nodeId": "medical",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "tonghuashun-ai",
+      "name": "同花顺 AI",
+      "nodeId": "finance",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "jd-ai",
+      "name": "京东AI",
+      "nodeId": "manufacture",
+      "stage": "listed",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "doubao",
+      "name": "字节豆包",
+      "nodeId": "recommend",
+      "stage": "listed",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "kunlun-wan",
+      "name": "昆仑万维",
+      "nodeId": "media",
+      "stage": "listed",
+      "marketPower": "niche",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "notion-ai",
+      "name": "Notion AI",
+      "nodeId": "nlp",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity AI",
+      "nodeId": "nlp",
+      "stage": "growth",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "nodeId": "media",
+      "stage": "growth",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "nodeId": "speech",
+      "stage": "growth",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "nodeId": "open-plat",
+      "stage": "growth",
+      "marketPower": "strong",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "harvey",
+      "name": "Harvey AI",
+      "nodeId": "finance",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "glean",
+      "name": "Glean",
+      "nodeId": "kg",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "shukunkeji",
+      "name": "数坤科技",
+      "nodeId": "medical",
+      "stage": "pre-ipo",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    },
+    {
+      "id": "zhiyuan-robot",
+      "name": "智元机器人",
+      "nodeId": "robot",
+      "stage": "growth",
+      "marketPower": "moderate",
+      "riskLevel": "green",
+      "riskSummary": "未发现公开失信/限高/被执行在册记录",
+      "city": "—",
+      "signal": "近期公开动态示意"
+    }
+  ]
+}
