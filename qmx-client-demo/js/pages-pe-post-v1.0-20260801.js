@@ -2923,14 +2923,6 @@
         + (longItems.length ? '<div class="po-biz-section"><h4>文字摘要</h4>' + fieldGrid(longItems) + '</div>' : '');
     } else if (bizTab === '底层项目') {
       var allUnder = _fundUnderlyingRows();
-      if (CURRENT_CONFIRM === 'fp3' && !UNDER_DRAWER) {
-        for (var _fi = 0; _fi < allUnder.length; _fi++) {
-          if ((allUnder[_fi].financialPeriods || []).length) {
-            UNDER_DRAWER = allUnder[_fi].name;
-            break;
-          }
-        }
-      }
       var needN = allUnder.filter(_rowNeedsAction).length;
       var changedN = allUnder.filter(_rowHasChange).length;
       if (UNDER_FILTER === 'need') UNDER_FILTER = 'changed'; /* 旧「要处理」筛已取消，回落到本季有变动 */
@@ -5818,6 +5810,7 @@
         var tabArg = arg;
         if (bizConfirmId === 'fp3') tabArg = _remapConfirmTab(FUND_CONFIRM_TAB_MAP, arg);
         else if (bizConfirmId === 'fp4' || bizConfirmId === 'fp6') tabArg = _remapConfirmTab(DIRECT_CONFIRM_TAB_MAP, arg);
+        if (tabArg !== '底层项目') UNDER_DRAWER = null;
         STRUCTURED_BIZ_TAB[bizConfirmId] = tabArg;
         if (bizConfirmId === 'fp3' && tabArg === '出资与回款') CONFIRM_SOURCE_STATE.fp3 = 1;
         if ((bizConfirmId === 'fp4' || bizConfirmId === 'fp6') && tabArg === '财务数据') CONFIRM_SOURCE_STATE[bizConfirmId] = 0;
