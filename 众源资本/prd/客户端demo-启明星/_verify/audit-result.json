@@ -1,0 +1,71 @@
+{
+  "totalClicked": 286,
+  "totalDead": 9,
+  "routes": [
+    {
+      "route": "home",
+      "hash": "#pe:home",
+      "targetCount": 33,
+      "deadCount": 1,
+      "dead": [
+        "投后问数 [homeFocus]"
+      ]
+    },
+    {
+      "route": "file-parse",
+      "hash": "#pe:file-parse",
+      "targetCount": 39,
+      "deadCount": 2,
+      "dead": [
+        "微影资本-资本账户表.pdf微影资本 · 202",
+        "安泰生物-2025年报-扫描件.pdf安泰生物 "
+      ]
+    },
+    {
+      "route": "projects",
+      "hash": "#pe:projects",
+      "targetCount": 49,
+      "deadCount": 6,
+      "dead": [
+        "NOT-FOUND 星河智造投后直投投资 5,000 万 · 持股 ",
+        "NOT-FOUND 清泉环保投后直投投资 8,000 万 · 持股 ",
+        "NOT-FOUND 华章科技投后直投投资 3,000 万 · 持股 ",
+        "NOT-FOUND 安泰生物投中直投投资 5,000 万 · 持股 ",
+        "NOT-FOUND 远航新材投前直投投资 0 万 · 持股 0% ·",
+        "NOT-FOUND 开始解析"
+      ]
+    },
+    {
+      "route": "project/p-xinghe",
+      "hash": "#pe:project/p-xinghe",
+      "targetCount": 36,
+      "deadCount": 0,
+      "dead": []
+    },
+    {
+      "route": "fund",
+      "hash": "#pe:fund",
+      "targetCount": 31,
+      "deadCount": 0,
+      "dead": []
+    },
+    {
+      "route": "post-browser",
+      "hash": "#pe:post-browser",
+      "targetCount": 54,
+      "deadCount": 0,
+      "dead": []
+    },
+    {
+      "route": "scenarios",
+      "hash": "#pe:scenarios",
+      "targetCount": 44,
+      "deadCount": 0,
+      "dead": []
+    }
+  ],
+  "errors": [
+    "Failed to execute 'writeText' on 'Clipboard': Write permission denied."
+  ],
+  "errorCount": 1
+}

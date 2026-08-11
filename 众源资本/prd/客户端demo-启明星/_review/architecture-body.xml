@@ -1,0 +1,55 @@
+<h1>一、功能模块—页面—功能</h1>
+<table>
+  <colgroup><col width="110"/><col width="150"/><col width="390"/><col width="70"/></colgroup>
+  <thead><tr><th background-color="light-gray">功能模块</th><th background-color="light-gray">页面</th><th background-color="light-gray">核心功能</th><th background-color="light-gray">阶段</th></tr></thead>
+  <tbody>
+    <tr><td>文件解析</td><td>文件解析页</td><td>批量上传；识别材料类型、归属项目和报告期间；查看处理状态与异常</td><td>M1</td></tr>
+    <tr><td>文件解析</td><td>数据确认页</td><td>原文对照；期间语义确认；科目映射；派生计算；校验；接受、修改、驳回；写入正式数据</td><td>M1</td></tr>
+    <tr><td>项目库</td><td>项目列表</td><td>统一管理投前、投中、投后项目；按阶段和项目类型筛选</td><td>M1</td></tr>
+    <tr><td>项目库</td><td>直投项目详情</td><td>企业档案、投资信息、期间数据、材料、确认与更新记录</td><td>M1</td></tr>
+    <tr><td>项目库</td><td>子基金项目详情</td><td>基金档案、出资与分配、基金期间数据、底层项目、材料与更新记录</td><td>M1</td></tr>
+    <tr><td>基金管理</td><td>管理基金列表</td><td>维护本机构管理基金；查看规模、状态和关联项目</td><td>M1</td></tr>
+    <tr><td>基金管理</td><td>管理基金详情</td><td>查看基金档案、组合项目、投资金额和持股价值</td><td>M1</td></tr>
+    <tr><td>报告中心</td><td>报告列表与生成页</td><td>选择模板和截止日；生成、查看、导出季报、半年报、年报</td><td>M2</td></tr>
+    <tr><td>项目数据浏览器</td><td>数据浏览器</td><td>选择项目、期间和指标；筛选、排序、对比、汇总、导出；查看数据来源</td><td>M3</td></tr>
+    <tr><td>配置中心</td><td>字段与规则配置</td><td>字段、科目、期间、公式、校验、来源优先级和报告模板配置</td><td>M1—M3</td></tr>
+    <tr><td>系统管理</td><td>机构与用户</td><td>机构隔离、用户管理、项目可见范围和操作记录</td><td>M1</td></tr>
+    <tr><td>项目动态</td><td>项目动态页</td><td>公开数据更新、动态摘要、预警、重大事项和跟进方向</td><td>M3</td></tr>
+    <tr><td>智能助手</td><td>任务与问数入口</td><td>项目问数、跨项目问数、连接器任务；答案回到项目和来源</td><td>M3</td></tr>
+  </tbody>
+</table>
+<hr/>
+<h1>二、期间处理放在哪里</h1>
+<callout emoji="📌" background-color="light-yellow" border-color="yellow">
+  <p><b>结论：</b>期间处理不单独成为功能模块，也不在原始文件解析时直接完成。它位于“解析完成—人工确认—正式入库”之间。</p>
+</callout>
+<table>
+  <colgroup><col width="130"/><col width="480"/></colgroup>
+  <thead><tr><th background-color="light-gray">环节</th><th background-color="light-gray">处理内容</th></tr></thead>
+  <tbody>
+    <tr><td>文件解析</td><td>读取文件中的原始列名、原始期间描述和原始数值，不改变原值</td></tr>
+    <tr><td>数据确认</td><td>确认期间语义和科目映射；执行期间标准化、累计转单期等派生计算；完成试算平衡与业务校验</td></tr>
+    <tr><td>人工确认</td><td>接受、修改或驳回候选结果；原始值和派生值分别保留</td></tr>
+    <tr><td>正式数据</td><td>确认后写入对应项目和期间；保留公式、输入版本、确认人和来源位置</td></tr>
+  </tbody>
+</table>
+<p><b>完整链路：</b>文件解析 → 期间语义确认 → 科目映射 → 期间标准化与派生计算 → 校验 → 人工确认 → 正式数据。</p>
+<hr/>
+<h1>三、M1—M3 边界</h1>
+<table>
+  <colgroup><col width="80"/><col width="530"/></colgroup>
+  <thead><tr><th background-color="light-gray">阶段</th><th background-color="light-gray">交付结果</th></tr></thead>
+  <tbody>
+    <tr><td>M1</td><td>材料进入系统，经过解析、计算、校验和人工确认，形成可追溯的直投与基金正式数据，并支持标准表导出</td></tr>
+    <tr><td>M2</td><td>使用指定截止日的已确认数据，生成季报、半年报和年报</td></tr>
+    <tr><td>M3</td><td>连接外部数据与材料，提供项目动态、预警、项目数据浏览器、项目问数和跨项目任务</td></tr>
+  </tbody>
+</table>
+<hr/>
+<h1>四、写作规则</h1>
+<ul>
+  <li><b>功能模块：</b>用户反复进入的一类工作。</li>
+  <li><b>页面：</b>用户完成工作的具体场所。</li>
+  <li><b>功能：</b>用户在页面上能执行的动作和得到的结果。</li>
+  <li><b>阶段：</b>说明何时交付，不作为功能模块。</li>
+</ul>

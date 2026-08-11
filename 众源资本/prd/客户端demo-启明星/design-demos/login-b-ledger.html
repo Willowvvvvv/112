@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>方向 B · 台账纸面 · 财跃启明星</title>
+<style>
+  :root {
+    --ink: #2c2c2e;
+    --page: #efece6;
+    --card: #fbfbfa;
+    --gray: #656a71;
+    --line: #d8d4cc;
+    --on-ink: #fbfbfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    min-height: 100vh;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+    background-color: var(--page);
+    background-image:
+      linear-gradient(rgba(44,44,46,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(44,44,46,.04) 1px, transparent 1px);
+    background-size: 100% 28px, 28px 100%;
+  }
+  .mast {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 40px 18px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .mast img { width: 40px; height: 40px; border-radius: 10px; }
+  .mast-name {
+    font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .mast-en {
+    margin-left: auto;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .stage {
+    min-height: calc(100vh - 82px);
+    display: grid;
+    place-items: center;
+    padding: 48px 20px 64px;
+    position: relative;
+  }
+  .horizon {
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    top: 58%;
+    height: 1px;
+    background: rgba(44,44,46,.22);
+  }
+  .venus {
+    position: absolute;
+    top: calc(58% - 7px);
+    right: 18%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #f3d2a6 0%, #c2351b 62%, #8a2414 100%);
+    box-shadow: 0 0 0 10px rgba(194,53,27,.08), 0 0 28px rgba(194,53,27,.18);
+  }
+  .card {
+    position: relative;
+    z-index: 1;
+    width: min(400px, 100%);
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 32px 28px 26px;
+  }
+  .card h2 {
+    font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .slogan {
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray);
+    margin: 8px 0 26px;
+    letter-spacing: 0.04em;
+  }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--gray); margin-bottom: 6px; }
+  input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0 12px;
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+  }
+  input:focus { border-color: var(--ink); }
+  .row { display: flex; gap: 8px; }
+  .row input { flex: 1; min-width: 0; }
+  .ghost {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    background: transparent;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .field { margin-bottom: 16px; }
+  .submit {
+    width: 100%;
+    height: 42px;
+    margin-top: 6px;
+    border: 0;
+    background: var(--ink);
+    color: var(--on-ink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <header class="mast">
+    <img src="../assets/logo-qmx-v1.0-20260731.png" alt="" />
+    <div class="mast-name">财跃启明星</div>
+    <div class="mast-en">Post-investment desk</div>
+  </header>
+  <main class="stage">
+    <div class="horizon" aria-hidden="true"></div>
+    <div class="venus" aria-hidden="true"></div>
+    <div class="card">
+      <h2>登录工作台</h2>
+      <p class="slogan">投后有数，破晓可见</p>
+      <form action="#" onsubmit="return false">
+        <div class="field">
+          <label for="p">手机号</label>
+          <input id="p" value="13800138000" />
+        </div>
+        <div class="field">
+          <label for="c">验证码</label>
+          <div class="row">
+            <input id="c" value="123456" />
+            <button class="ghost" type="button">获取验证码</button>
+          </div>
+        </div>
+        <button class="submit" type="submit">登录</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

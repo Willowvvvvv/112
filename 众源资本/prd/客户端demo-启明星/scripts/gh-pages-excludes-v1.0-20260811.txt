@@ -1,0 +1,33 @@
+# 客户端 Demo · GitHub Pages 发布排除清单
+# 版本：v1.0 · 2026-08-11
+
+.DS_Store
+*.log
+.git
+.gh-pages-build
+.playwright-mcp
+**/.playwright-mcp/**
+_verify
+**/_verify/**
+_review
+**/_review/**
+scratch
+**/scratch/**
+diagrams
+**/diagrams/**
+tests
+**/tests/**
+scripts
+**/scripts/**
+docs
+**/docs/**
+design-demos
+**/design-demos/**
+*.md
+verify-*.js
+audit-*.js
+screenshot-*.js
+diag-*.js
+_check*.js
+_check-all.js
+_verify-all-pages.js

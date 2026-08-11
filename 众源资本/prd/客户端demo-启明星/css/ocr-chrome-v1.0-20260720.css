@@ -1,0 +1,263 @@
+/**
+ * OCR 全屏 + 左侧菜单折叠（PE / 银行共用）
+ * AI 产出右栏顶：tabs + chrome 操作
+ */
+
+/* —— AI 产出 tab 行 —— */
+.xb-artifact-tabs-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 10px 0 12px;
+  min-height: 44px;
+  border-bottom: 1px solid var(--xb-line, #e8ecf0);
+  background: #fff;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.xb-artifact-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  min-width: 0;
+  flex: 1;
+  overflow-x: auto;
+}
+.xb-artifact-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--xb-muted, #536075);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.xb-artifact-tab:hover {
+  color: var(--xb-brand, #0d2e4b);
+}
+.xb-artifact-tab.is-active {
+  color: var(--xb-brand, #0d2e4b);
+  font-weight: 600;
+  border-bottom-color: var(--xb-brand, #0d2e4b);
+}
+.xb-artifact-tabs-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.xb-artifact-tabs-actions .xb-artifact-close {
+  font-size: 13px;
+  padding: 4px 8px;
+}
+
+.xb-ocr-chrome-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.xb-ocr-chrome-btn,
+.xb-shell-side-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--xb-line, #e8ecf0);
+  border-radius: var(--xb-radius-sm, 3px);
+  background: #fff;
+  color: var(--xb-muted, #536075);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.xb-ocr-chrome-btn:hover,
+.xb-shell-side-toggle:hover {
+  color: var(--xb-brand, #0d2e4b);
+  border-color: #c5d0db;
+  background: var(--xb-bg-soft, #f5f7fa);
+}
+.xb-ocr-chrome-btn.is-active,
+.xb-shell-side-toggle.is-active {
+  color: var(--xb-brand, #0d2e4b);
+  background: var(--xb-color-primary-muted, #e8eef3);
+  border-color: #c5d0db;
+}
+.xb-ocr-ico {
+  display: block;
+  pointer-events: none;
+}
+
+/* 挂在 .sidebar-brand 内：与 logo+标题同一行，靠右 */
+.xb-shell-side-toggle-wrap {
+  margin-left: auto;
+  padding: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.app.sidebar-collapsed .xb-shell-side-toggle-wrap {
+  margin-left: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+/* —— 全屏：挂在右栏根（含 tab 行），只放大 body；顶栏 Tabs + 操作钉住 —— */
+.xb-right-pane.is-ocr-fullscreen,
+[data-ocr-fs-root].is-ocr-fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: var(--xb-left-w, 220px);
+  z-index: 1200;
+  background: #fff;
+  box-shadow: none;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.xb-right-pane.is-ocr-fullscreen .xb-artifact-tabs-h,
+[data-ocr-fs-root].is-ocr-fullscreen .xb-artifact-tabs-h {
+  position: relative;
+  top: auto;
+  z-index: 6;
+  flex-shrink: 0;
+}
+.xb-right-pane.is-ocr-fullscreen .xb-right-pane-body,
+[data-ocr-fs-root].is-ocr-fullscreen .xb-right-pane-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.xb-right-pane.is-ocr.is-ocr-fullscreen .xb-right-pane-body,
+[data-ocr-fs-root].is-ocr.is-ocr-fullscreen .xb-right-pane-body {
+  overflow: hidden;
+}
+.xb-right-pane.is-ocr-fullscreen .bk-ocr-detail,
+.xb-right-pane.is-ocr-fullscreen .bk-dd-report,
+.xb-right-pane.is-ocr-fullscreen .xb-doc-dock,
+[data-ocr-fs-root].is-ocr-fullscreen .bk-ocr-detail,
+[data-ocr-fs-root].is-ocr-fullscreen .bk-dd-report,
+[data-ocr-fs-root].is-ocr-fullscreen .xb-doc-dock {
+  flex: 1;
+  min-height: 0;
+}
+.xb-right-pane.is-ocr-fullscreen .xb-doc-dock,
+[data-ocr-fs-root].is-ocr-fullscreen .xb-doc-dock {
+  overflow: auto;
+}
+.app.sidebar-collapsed .xb-right-pane.is-ocr-fullscreen,
+.app.sidebar-collapsed [data-ocr-fs-root].is-ocr-fullscreen {
+  left: 56px;
+}
+body.ocr-fs-active {
+  overflow: hidden;
+}
+
+/* —— App 侧栏折叠 —— */
+.app.sidebar-collapsed {
+  grid-template-columns: 56px 1fr;
+}
+.app.sidebar-collapsed .sidebar-brand {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px 8px;
+}
+.app.sidebar-collapsed .sidebar-brand-name,
+.app.sidebar-collapsed .sidebar-mode,
+.app.sidebar-collapsed .sidebar-section,
+.app.sidebar-collapsed .sidebar-foot .meta {
+  display: none;
+}
+.app.sidebar-collapsed .nav-item {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  font-size: 0;
+  padding: 9px 2px;
+  text-align: center;
+  position: relative;
+}
+.app.sidebar-collapsed .nav-item > span {
+  margin-right: 0 !important;
+}
+.app.sidebar-collapsed .nav-item::after {
+  content: attr(data-nav-label);
+  font-size: 10px;
+  display: block;
+  color: inherit;
+  line-height: 1.2;
+  padding: 0 2px;
+  word-break: break-all;
+  max-height: 2.4em;
+  overflow: hidden;
+}
+.app.sidebar-collapsed .sidebar-foot {
+  justify-content: center;
+  padding: 10px 8px;
+}
+.app.sidebar-collapsed .sidebar-foot .avatar {
+  margin: 0;
+}
+
+/* PE 右区 OCR 宽一点 */
+.xb-project-workspace.has-right.is-ocr-wide {
+  grid-template-columns: var(--xb-files-w, 220px) minmax(200px, 0.85fr) minmax(480px, 1.45fr);
+}
+.xb-project-workspace.has-right.is-ocr-wide.files-collapsed {
+  grid-template-columns: minmax(200px, 0.85fr) minmax(480px, 1.45fr);
+}
+/* 所有 AI 产出面板共用：顶栏 + 可伸缩内容区（全屏同构） */
+.xb-right-pane[data-ocr-fs-root],
+.xb-right-pane.is-ocr {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.xb-right-pane[data-ocr-fs-root] .xb-right-pane-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+/* OCR 双栏：禁止外层滚动，由内部两栏各自滚动 */
+.xb-right-pane.is-ocr .xb-right-pane-body {
+  overflow: hidden;
+  padding: 0;
+}
+.xb-right-pane.is-ocr .bk-ocr-detail,
+.xb-right-pane[data-ocr-fs-root] .bk-dd-report,
+.xb-right-pane[data-ocr-fs-root] .xb-doc-dock {
+  flex: 1;
+  min-height: 0;
+}
+.xb-right-pane[data-ocr-fs-root] .xb-doc-dock {
+  overflow: auto;
+}
+
+@media (max-width: 900px) {
+  .xb-right-pane.is-ocr-fullscreen,
+  [data-ocr-fs-root].is-ocr-fullscreen,
+  .app.sidebar-collapsed .xb-right-pane.is-ocr-fullscreen,
+  .app.sidebar-collapsed [data-ocr-fs-root].is-ocr-fullscreen {
+    left: 0;
+  }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>方向 C · 破晓留白 · 财跃启明星</title>
+<style>
+  :root {
+    --ink: #2c2c2e;
+    --gray: #656a71;
+    --line: #e2e2e6;
+    --card: rgba(251,251,250,.88);
+    --on-ink: #fbfbfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    min-height: 100vh;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 38%, rgba(194,53,27,.13) 0%, rgba(194,53,27,.04) 38%, transparent 68%),
+      linear-gradient(180deg, #d5dbe3 0%, #eceef1 38%, #f5f5f7 62%, #efe8e1 100%);
+    display: grid;
+    grid-template-columns: 1fr minmax(320px, 400px);
+    align-items: center;
+    gap: 48px;
+    padding: 72px 8vw;
+  }
+  .hero { max-width: 520px; padding-top: 40px; }
+  .star {
+    width: 88px;
+    height: 88px;
+    border-radius: 22px;
+    display: block;
+    margin-bottom: 36px;
+    filter: drop-shadow(0 10px 28px rgba(194,53,27,.22));
+  }
+  h1 {
+    font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+    font-weight: 600;
+    font-size: clamp(36px, 4.4vw, 52px);
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+  }
+  .slogan {
+    margin-top: 18px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--gray);
+  }
+  .note {
+    margin-top: 40px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--gray);
+    max-width: 28em;
+  }
+  .panel {
+    background: var(--card);
+    border: 1px solid rgba(226,226,230,.9);
+    border-radius: 16px;
+    padding: 32px 28px 28px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 50px rgba(44,44,46,.06);
+  }
+  .panel h2 { font-size: 16px; font-weight: 600; margin-bottom: 22px; }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--gray); margin-bottom: 6px; }
+  input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0 12px;
+    background: #fbfbfa;
+    font-size: 14px;
+    outline: none;
+  }
+  input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(44,44,46,.07); }
+  .row { display: flex; gap: 8px; }
+  .row input { flex: 1; min-width: 0; }
+  .ghost {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: transparent;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .field { margin-bottom: 16px; }
+  .submit {
+    width: 100%;
+    height: 42px;
+    margin-top: 6px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--on-ink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  @media (max-width: 860px) {
+    body { grid-template-columns: 1fr; padding: 40px 20px 48px; }
+  }
+</style>
+</head>
+<body>
+  <section class="hero">
+    <img class="star" src="../assets/logo-qmx-v1.0-20260731.png" alt="财跃启明星" />
+    <h1>财跃启明星</h1>
+    <p class="slogan">在数字里看见方向</p>
+    <p class="note">启明星是破晓前最亮的那一颗。登录之后，投后材料、口径与台账应像开盘一样准时、可核。</p>
+  </section>
+  <section class="panel">
+    <h2>手机号验证码登录</h2>
+    <form action="#" onsubmit="return false">
+      <div class="field">
+        <label for="p">手机号</label>
+        <input id="p" value="13800138000" />
+      </div>
+      <div class="field">
+        <label for="c">验证码</label>
+        <div class="row">
+          <input id="c" value="123456" />
+          <button class="ghost" type="button">获取验证码</button>
+        </div>
+      </div>
+      <button class="submit" type="submit">登录</button>
+    </form>
+  </section>
+</body>
+</html>

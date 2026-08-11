@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>财跃启明星</title>
+<script>
+(function () {
+  try {
+    document.documentElement.setAttribute('data-density', localStorage.getItem('qmx-density') || 'default');
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('qmx-theme') || 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-density', 'default');
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
+<link rel="icon" href="./assets/logo-qmx-v1.0-20260731.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./css/shell.css?v=20260808-toast-dark" />
+<link rel="stylesheet" href="./css/experts.css?v=20260807-discover-beside" />
+<link rel="stylesheet" href="./css/pe-surfaces.css?v=20260807-jr-modal" />
+<link rel="stylesheet" href="./css/pe-fix-v1.0-20260718.css" />
+<link rel="stylesheet" href="./css/pe-post-v1.0-20260801.css?v=20260808-pending-final" />
+<link rel="stylesheet" href="./css/bank-xinxin-artifacts-v1.0-20260720.css?v=20260720-ev-panel" />
+<link rel="stylesheet" href="./css/bank-report-task-v1.0-20260720.css?v=20260720-full-ev-panel" />
+<link rel="stylesheet" href="./css/ocr-chrome-v1.0-20260720.css?v=20260720-ai-tabs2" />
+<link rel="stylesheet" href="./css/pe-readability-v1.1-20260808.css?v=20260808-field-sep-select" />
+<style>
+.xb-skill-card--muted { opacity: 0.55; pointer-events: none; }
+</style>
+</head>
+<body class="is-logged-out">
+<div id="loginRoot" class="login-screen">
+  <div class="login-bg" aria-hidden="true">
+    <div class="login-bg-sky"></div>
+    <div class="login-bg-glow"></div>
+    <svg class="login-bg-mark" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#2c2c2e" stroke-width="1">
+        <circle cx="720" cy="430" r="200" opacity="0.045"/>
+        <circle cx="720" cy="430" r="320" opacity="0.035"/>
+        <circle cx="720" cy="430" r="460" opacity="0.028"/>
+      </g>
+      <path d="M0 680 H1440" fill="none" stroke="#2c2c2e" stroke-width="1" opacity="0.08"/>
+      <g stroke="#2c2c2e" stroke-width="1" fill="none" opacity="0.10">
+        <path d="M168 628 V732"/>
+        <path d="M152 680 H184"/>
+        <path d="M160 652 H176"/>
+      </g>
+      <path d="M48 812 C 260 770, 430 710, 580 640 S 900 470, 1392 348" fill="none" stroke="#2c2c2e" stroke-width="1.25" stroke-linecap="round" opacity="0.14"/>
+      <g transform="translate(1392 348)">
+        <path d="M0,-9 L1.5,-1.5 L9,0 L1.5,1.5 L0,9 L-1.5,1.5 L-9,0 L-1.5,-1.5 Z" fill="#2c2c2e" fill-opacity="0.28"/>
+      </g>
+    </svg>
+  </div>
+  <div class="login-card">
+    <img class="login-logo" src="./assets/logo-qmx-v1.0-20260731.png" alt="启明星" width="48" height="48" />
+    <div class="login-title">启明星</div>
+    <div class="login-sub">手机号验证码登录 · 演示已预填，直接点登录</div>
+    <div id="loginFields">
+      <label class="login-label" for="loginPhone">手机号</label>
+      <input class="login-input" id="loginPhone" type="tel" inputmode="numeric" maxlength="11" autocomplete="tel" placeholder="请输入手机号" value="13800138000" />
+      <div class="login-err" id="loginPhoneErr"></div>
+      <label class="login-label" for="loginCode">验证码</label>
+      <div class="login-code-row">
+        <input class="login-input" id="loginCode" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="请输入验证码" value="123456" />
+        <button type="button" class="btn btn-ghost" id="loginSendCode">获取验证码</button>
+      </div>
+      <div class="login-err" id="loginCodeErr"></div>
+      <button type="button" class="btn btn-primary login-submit" id="loginSubmit">登录</button>
+    </div>
+    <div id="loginOrgPick" hidden>
+      <div class="login-label">选择机构</div>
+      <div class="login-org-list" id="loginOrgList"></div>
+    </div>
+    <p class="login-hint" id="loginRegHint" hidden>未开通的手机号将自动创建账号</p>
+    <div class="login-protocols" id="loginProtocols"></div>
+  </div>
+</div>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-brand" id="sidebarBrand" title="工作台">
+      <span class="sidebar-brand-name">财跃启明星</span>
+    </div>
+    <div class="sidebar-scroll" id="sidebarNav"></div>
+    <div class="sidebar-foot-wrap" id="sidebarFootWrap">
+      <div class="sidebar-foot" id="sidebarFoot" title="账户" role="button" tabindex="0">
+        <div class="avatar" id="userAvatar">王</div>
+        <div class="meta">
+          <strong id="userName">王敏</strong>
+          <span id="userRole">投资经理</span>
+        </div>
+      </div>
+      <div class="user-menu-pop" id="userMenuPop" hidden>
+        <div class="user-menu-head">
+          <strong id="userMenuName">王敏</strong>
+          <span id="userMenuMeta">启明星基金 · 投资经理</span>
+        </div>
+        <button type="button" class="user-menu-item" id="userMenuProfile">个人中心</button>
+        <button type="button" class="user-menu-item" id="userMenuLogout">退出登录</button>
+        <div class="user-menu-display">
+          <div class="user-menu-label">显示密度</div>
+          <div class="user-menu-seg" role="group" aria-label="显示密度">
+            <button type="button" data-density-set="comfortable">舒适</button>
+            <button type="button" data-density-set="default">默认</button>
+            <button type="button" data-density-set="compact">紧凑</button>
+          </div>
+          <div class="user-menu-label">外观</div>
+          <div class="user-menu-seg" role="group" aria-label="外观">
+            <button type="button" data-theme-set="light">浅色</button>
+            <button type="button" data-theme-set="dark">深色</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <main class="main">
+    <div id="viewRoot"></div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="./js/data-pe.js"></script>
+<script src="./js/data-pe-surfaces.js"></script>
+<script src="./js/data-pe-discover-v1.0-20260718.js"></script>
+<script src="./js/data-experts.js"></script>
+<script src="./js/data-bank.js?v=20260720-artifacts-done"></script>
+<script src="./js/data-bank-dd-report-v1.0-20260720.js?v=20260720-dd-tables"></script>
+<script src="./js/data-bank-ubo-report-v1.0-20260720.js"></script>
+<script src="./js/ocr-chrome-helper-v1.0-20260720.js?v=20260720-ai-tabs2"></script>
+<script src="./js/data-pe-post-browser-v1.0-20260722.js"></script>
+<script src="./js/pages-pe-post-browser-v1.0-20260722.js"></script>
+<script src="./js/data-pe-portfolio-v1.0-20260728.js"></script>
+<script src="./js/pages-pe-portfolio-v1.0-20260728.js"></script>
+<script src="./js/config-center-crud-v1.0-20260803.js?v=20260808-archive-seed"></script>
+<script src="./js/data-fof-template-ggv-v1.0-20260808.js?v=20260808-rounds"></script>
+<script src="./js/data-pe-post-v1.0-20260801.js?v=20260808-sa-tab-guard"></script>
+<script src="./js/pe-post-crud-v1.0-20260802.js?v=20260808-tpl-align"></script>
+<script src="./js/pages-pe-post-v1.0-20260801.js?v=20260808-by-province"></script>
+<script src="./js/pages-pe.js?v=20260808-archive-seed"></script>
+<script src="./js/pages-bank.js?v=20260808-rolefix"></script>
+<script src="./js/pages-bank-project-v1.2-20260720.js?v=20260720-clean-chat"></script>
+<script src="./js/pages-bank-report-task-v1.0-20260720.js?v=20260720-full-ev-panel"></script>
+<script src="./js/pages-bank-ia-v1.3-20260720.js?v=20260720-artifacts-done"></script>
+<script src="./js/pages-bank-monitor-v1.0-20260720.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="./js/pe-post-export-v1.0-20260807.js?v=20260808-vert-full"></script>
+<script src="./js/app.js?v=20260808-no-confirm-bc"></script>
+</body>
+</html>

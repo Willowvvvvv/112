@@ -1,0 +1,39 @@
+# 众源资本 · 客户端 Demo → GitHub Pages 子路径 /qmx-client-demo/
+# 版本：v1.0 · 2026-08-11
+name: Deploy QMX Client Demo (GitHub Pages)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "众源资本/prd/客户端demo-启明星/**"
+      - ".github/workflows/deploy-qmx-client-demo-github-pages-v1.0-20260811.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qmx-client-demo-github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build static site
+        run: bash "众源资本/prd/客户端demo-启明星/scripts/build-gh-pages-v1.0-20260811.sh"
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: 众源资本/prd/客户端demo-启明星/.gh-pages-build
+          publish_branch: gh-pages
+          destination_dir: qmx-client-demo
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: "deploy: qmx-client-demo @ ${{ github.sha }}"
