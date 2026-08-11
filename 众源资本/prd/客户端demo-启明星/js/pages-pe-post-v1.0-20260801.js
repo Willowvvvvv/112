@@ -3094,9 +3094,9 @@
             + '<button type="button" class="po-icon-btn" data-act="closeUnderDrawer" aria-label="关闭">×</button>'
             + '</div></div>'
             + (!_rowArchiveOk(dr) ? '<div class="po-under-drawer-arch">' + _underArchActionsHtml(dr, true) + '</div>' : '')
+            + (hasFin ? _underSecHtml('finData', '财务数据', finPeriodsHtml, true) : '')
             + _underSecHtml('ov', '企业概况', overviewBody, true)
             + _underSecHtml('hold', '持仓信息', holdBody, true)
-            + _underSecHtml('finData', '财务数据', finPeriodsHtml, hasFin)
             + _underSecHtml('biz', '经营与退出', bizBody, hasBiz)
             + _underSecHtml('fin', '后续轮融资史', finBody, !!finBody)
             + '</div>';
